@@ -1,8 +1,9 @@
 // Copyright (c) Alexandre Mutel. All rights reserved.
 // This file is licensed under the BSD-Clause 2 license. 
 // See the license.txt file in the project root for more information.
-using System.Globalization;
 using Markdig.Syntax;
+using Markdig.Syntax.Inlines;
+using System.Globalization;
 
 namespace Markdig.Renderers.Html
 {
@@ -29,7 +30,8 @@ namespace Markdig.Renderers.Html
 
             if (renderer.EnableHtmlForBlock)
             {
-                renderer.Write("<").Write(headingText).WriteAttributes(obj).Write(">");
+                renderer.Write("<").Write(headingText).WriteAttributes(obj)
+                    .Write($"id=\"{((LiteralInline)(Inline)obj.Inline).Content.Text.Replace(' ', '_')}\"").Write(">");
             }
 
             renderer.WriteLeafInline(obj);

@@ -57,6 +57,7 @@ namespace Markdig.Renderers.Html.Inlines
             }
             else
             {
+                renderer.Write(" target=\"_blank\"");
                 if (renderer.EnableHtmlForInline)
                 {
                     if (AutoRelNoFollow)
